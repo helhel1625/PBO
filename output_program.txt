@@ -1,0 +1,64 @@
+=== DATA AWAL (polymorphism) ===
+Kegiatan : Skill Exchange
+Jadwal   : 15 Oktober 2026
+Kuota    : 2 (peserta: 0)
+Biaya    : Rp50.000
+Status   : buka
+-------------------------------------
+Kegiatan : Latihan Kepemimpinan
+Jadwal   : 25 Oktober 2026
+Kuota    : 30 (peserta: 0)
+Biaya    : Rp75.000
+Status   : buka
+-------------------------------------
+Kegiatan : Seminar PBO
+Jadwal   : 1 November 2026
+Kuota    : 100 (peserta: 0)
+Biaya    : Rp0
+Status   : buka
+Pembicara: Ahmad Fauzi
+-------------------------------------
+
+### Skenario 1 (NORMAL): pendaftaran berhasil
+Andi terdaftar di Latihan Kepemimpinan. Sisa kuota: 29
+
+### Skenario 2 (BATAS): kuota habis -> otomatis tutup
+Andi terdaftar di Skill Exchange. Sisa kuota: 1
+Budi terdaftar di Skill Exchange. Sisa kuota: 0
+Status: tutup
+
+### Skenario 3 (BATAS): mendaftar setelah kuota habis
+[DITOLAK - RuntimeException] Pendaftaran Skill Exchange sudah ditutup atau kuota penuh
+
+### Skenario 4 (SALAH): kuota negatif
+[DITOLAK - InvalidArgumentException] Kuota tidak valid: -5 (tidak boleh negatif)
+
+### Skenario 5 (SALAH): nama acara kosong
+[DITOLAK - InvalidArgumentException] Nama acara minimal 3 karakter
+
+### Skenario 6 (SALAH): buka pendaftaran saat kuota 0
+[DITOLAK - RuntimeException] Pendaftaran tidak bisa dibuka: kuota Skill Exchange habis
+
+### Skenario 7 (SALAH): membuat objek dari abstract class
+[DITOLAK - Error] Cannot instantiate abstract class Kegiatan
+
+=== DATA AKHIR ===
+Kegiatan : Skill Exchange
+Jadwal   : 15 Oktober 2026
+Kuota    : 0 (peserta: 2)
+Biaya    : Rp50.000
+Status   : tutup
+-------------------------------------
+Kegiatan : Latihan Kepemimpinan
+Jadwal   : 25 Oktober 2026
+Kuota    : 29 (peserta: 1)
+Biaya    : Rp75.000
+Status   : buka
+-------------------------------------
+Kegiatan : Seminar PBO
+Jadwal   : 1 November 2026
+Kuota    : 100 (peserta: 0)
+Biaya    : Rp0
+Status   : buka
+Pembicara: Ahmad Fauzi
+-------------------------------------
